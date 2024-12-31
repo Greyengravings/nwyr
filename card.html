@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Card</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Party Popper Styles */
+        .party-popper-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            opacity: 0.8;
+            transform: rotate(45deg);
+            animation: popper 2s ease-out forwards;
+        }
+
+        /* Animation for full-page effect */
+        @keyframes popper {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-200px) rotate(90deg); /* Upar uchhalte hain */
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg); /* Niche girte hain */
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Container for the Card Page -->
+    <div class="card-background-container">
+        <!-- The Card -->
+        <div class="card" onclick="openCard()">
+            <div class="card-front">
+                <h2>Click to open</h2>
+            </div>
+            <div class="card-back">
+                <h2>Heeyy Dear <span id="name"></span>!!!, Cheers to all the late-night talks, endless laughs, and unforgettable moments we’ve shared!! Wishing you and your entire family a very Happy New Year from Hitesh and family!❤️ May the coming year be filled with happiness, joy, and wonderful memories for all of us to cherish❤️. Let’s make this year even better together!!
+-Buddy❤️ </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Party Popper Container -->
+    <div class="party-popper-container"></div>
+
+    <script>
+        // Grab the query parameter from the URL (if available)
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name'); // Name is passed as a query parameter
+        document.getElementById("name").textContent = userName || "Guest"; // Fallback if name is not available
+
+        // Function to open card and trigger party popper
+        function openCard() {
+            const card = document.querySelector('.card');
+            const popperContainer = document.querySelector('.party-popper-container');
+            
+            // Toggle the card open state
+            card.classList.toggle('open');
+            
+            // If card is open, trigger party popper
+            if (card.classList.contains('open')) {
+                triggerPartyPopper(popperContainer);
+            }
+        }
+
+        // Function to create and trigger party popper
+        function triggerPartyPopper(container) {
+            // Clear previous confetti
+            container.innerHTML = '';
+            container.style.display = 'block';
+
+            // Create multiple confetti elements
+            for (let i = 0; i < 100; i++) { // Increase the count for a denser effect
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`; // Spread horizontally
+                confetti.style.top = `${Math.random() * 100}%`; // Spread vertically
+                confetti.style.backgroundColor = getRandomColor(); // Random confetti color
+                confetti.style.animationDelay = `${Math.random() * 0.5}s`; // Random delay
+                container.appendChild(confetti);
+
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 2000);
+            }
+        }
+
+        // Function to generate random colors
+        function getRandomColor() {
+            const colors = ['#ffcc00', '#ff6666', '#66b3ff', '#66ff66', '#ff99ff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
