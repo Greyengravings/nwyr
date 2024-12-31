@@ -1,0 +1,179 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background-color: #f0f0f0;  /* Fallback color */
+}
+
+/* Background Image for the Whole Page (for index.html) */
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://thumbs.dreamstime.com/b/happy-new-year-reflection-fireworks-happy-new-year-fire-works-reflection-sky-314395685.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Adding a dark overlay for better text contrast */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Form Container Styling (for index.html) */
+.form-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Soft shadow */
+    width: 350px;  /* Fixed width for the form */
+}
+
+/* Heading Styling (for index.html) */
+h1 {
+    font-size: 30px;
+    color: rgb(237, 137, 6);
+    margin-bottom: 20px;
+}
+
+/* Input Field Styling (for index.html) */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+/* Button Styling (for index.html) */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fc9300; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #fc6d00; /* Darker green on hover */
+}
+
+/* Responsiveness - Mobile devices (for index.html) */
+@media (max-width: 480px) {
+    .form-container {
+        width: 80%;  /* Makes the form container responsive */
+    }
+
+    h1 {
+        font-size: 22px;  /* Adjusts heading size on smaller screens */
+    }
+
+    input[type="text"], button {
+        font-size: 14px;  /* Smaller input text and button size */
+    }
+}
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background-color: #f0f0f0;  /* Fallback color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Background Image for the Whole Page (card.html) */
+.card-background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://wallpapers.com/images/hd/soothing-mv39d70ig1kgyg5y.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Adding a dark overlay for better contrast */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Card Container */
+.card {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+}
+
+/* Card Front and Back */
+.card .card-front, .card .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+/* Front of the card (before opening) */
+.card .card-front {
+    background-image: url('https://i.pinimg.com/1200x/47/88/f8/4788f8518df41fa0d1d6de8c0719384c.jpg'); /* Replace with your front image */
+    opacity: 100%;
+    background-size: cover;
+    background-position: center;
+    position:relative;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: relative;
+}
+
+/* Back of the card (after opening) */
+.card .card-back {
+    background-color: #7016b9;  /* Green color for the back */
+    color: white;
+    transform: rotateY(180deg);
+    font-size: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* When the card is clicked (opened) */
+.card.open .card-front {
+    transform: rotateY(-180deg); /* Rotate the front 180 degrees */
+}
+
+.card.open .card-back {
+    transform: rotateY(0deg); /* Rotate the back to its original position */
+}
+
+/* For responsiveness: adjust card and button size on smaller screens */
+@media (max-width: 600px) {
+    .card {
+        width: 250px;
+        height: 350px;
+    }
+}
