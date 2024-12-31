@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="background-container">
+        <!-- Main Content Container -->
+        <div class="form-container">
+            <h1>Your Name Please</h1>
+            <form id="nameForm">
+                <input type="text" id="nameInput" placeholder="Enter your name" autocomplete="off" required>
+                <button type="submit">ENTER</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Handle form submission
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userName = document.getElementById('nameInput').value.trim();
+            if (userName) {
+                // Redirect to the card page with the user's name as a query parameter
+                window.location.href = `card.html?name=${encodeURIComponent(userName)}`;
+            } else {
+                alert("Please enter your name.");
+            }
+        });
+    </script>
+</body>
+</html>
